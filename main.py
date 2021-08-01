@@ -22,7 +22,8 @@ class SMZDM_Bot(object):
         """
         try:
             result = msg.json()
-            print(result)
+            #print(result)
+            print("什么值得买连续签到天数：%s" % (result['data']['checkin_num']))
             return True
         except Exception as e:
             print(f'Error : {e}')            
@@ -55,7 +56,8 @@ if __name__ == '__main__':
     cookies = os.environ["COOKIES"]
     sb.load_cookie_str(cookies)
     res = sb.checkin()
-    print(res)
+    #print(res)
+    print("什么值得买连续签到天数：%s" % (res['data']['checkin_num']))
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
     if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
