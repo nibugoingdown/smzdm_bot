@@ -66,4 +66,20 @@ if __name__ == '__main__':
                         # desp = str(res),
                         desp = "本周连续签到天数：%s" % (res['data']['continue_checkin_days']),
                         secretKey = SERVERCHAN_SECRETKEY)
+        
+    sb1 = SMZDM_Bot()
+    # sb1.load_cookie_str(config.TEST_COOKIE)
+    cookies = os.environ["COOKIES1"]
+    sb1.load_cookie_str(cookies)
+    res1 = sb1.checkin()
+    # print(res1)
+    print("什么值得买连续签到天数：%s" % (res1['data']['checkin_num']))
+    SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY1"]
+    print('sc_key: ', SERVERCHAN_SECRETKEY)
+    if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
+        print('检测到 SCKEY， 准备推送')
+        push_to_wechat(text = "值得买已签到%s天" % (res1['data']['checkin_num']),
+                        # desp = str(res1),
+                        desp = "本周连续签到天数：%s" % (res1['data']['continue_checkin_days']),
+                        secretKey = SERVERCHAN_SECRETKEY)
     print('代码完毕')
