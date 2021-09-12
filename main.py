@@ -68,11 +68,9 @@ if __name__ == '__main__':
                         secretKey = SERVERCHAN_SECRETKEY)
         
     sb1 = SMZDM_Bot()
-    # sb1.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["COOKIES1"]
     sb1.load_cookie_str(cookies)
     res1 = sb1.checkin()
-    # print(res1)
     print("什么值得买连续签到天数：%s" % (res1['data']['checkin_num']))
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY1"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
