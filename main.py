@@ -56,14 +56,14 @@ if __name__ == '__main__':
     cookies = os.environ["COOKIES"]
     sb.load_cookie_str(cookies)
     res = sb.checkin()
-    #print(res)
+    # print(res)
     print("什么值得买连续签到天数：%s" % (res['data']['checkin_num']))
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
     if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
         print('检测到 SCKEY， 准备推送')
         push_to_wechat(text = "值得买已签到%s天" % (res['data']['checkin_num']),
-                        #desp = str(res),
+                        # desp = str(res),
                         desp = "本周连续签到天数：%s" % (res['data']['continue_checkin_days']),
                         secretKey = SERVERCHAN_SECRETKEY)
     print('代码完毕')
